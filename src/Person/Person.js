@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Person() {
-    return <p>I'm a person {Math.floor(Math.random() * 30)}</p>
+function Person(props) {
+    return <p>I'm {props.name} and I am {props.age} years old!</p>
 }
 
 export default Person;
