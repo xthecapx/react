@@ -19,7 +19,8 @@ class App extends Component {
         age: 30
       }
     ],
-    otherState: "Some other vale"
+    otherState: "Some other vale",
+    showPerson: false
   };
 
   switchNameHandler = (newName) => {
@@ -60,6 +61,10 @@ class App extends Component {
     }); 
   }
 
+  togglePersonsHandler = () => {
+    this.setState({showPerson: !this.state.showPerson})
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -76,20 +81,25 @@ class App extends Component {
         {/** slow code */}
         <button 
           style={style}
-          onClick={() => this.switchNameHandler('Cris*')}>Switch name</button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age} />
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, 'Cris!!')}
-          changed={this.nameChangedHandler}>
-          My Hobbies: Racing
-        </Person>
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age} />
+          onClick={this.togglePersonsHandler}>Toggle Person</button>
+        {
+          this.state.showPerson ? 
+            <div>
+              <Person 
+                name={this.state.persons[0].name} 
+                age={this.state.persons[0].age} />
+              <Person 
+                name={this.state.persons[1].name} 
+                age={this.state.persons[1].age}
+                click={this.switchNameHandler.bind(this, 'Cris!!')}
+                changed={this.nameChangedHandler}>
+                My Hobbies: Racing
+              </Person>
+              <Person 
+                name={this.state.persons[2].name} 
+                age={this.state.persons[2].age} />
+            </div> : null
+        }
       </div>
     );
     // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hello'))
