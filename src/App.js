@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Person from "./Person/Person";
 
@@ -34,22 +33,21 @@ class App extends Component {
     this.setState({persons: persons});
   }
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+    const persons = this.state.persons.reduce((acc, person) => {
+      if (person.id === id) {
+        acc.push({...person, name: event.target.value});
+      } else {
+        acc.push({...person});
+      }
+
+      return acc;
+    }, []);
+
+    debugger;
+
     this.setState({
-      persons: [
-        {
-          name: "Cristian",
-          age: 18
-        },
-        {
-          name: event.target.value,
-          age: 19
-        },
-        {
-          name: "Marquez",
-          age: 10
-        }
-      ]
+      persons
     }); 
   }
 
@@ -76,7 +74,8 @@ class App extends Component {
               key={person.id}
               click={this.deletePersonHandler.bind(this, index)}
               name={person.name} 
-              age={person.age} />
+              age={person.age}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div> 
       );
