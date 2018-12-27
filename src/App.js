@@ -3,6 +3,7 @@ import classes from './App.css';
 import Person from './Person/Person';
 
 // https://github.com/css-modules/css-modules
+// https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
 class App extends Component {
   state = {
     persons: [
