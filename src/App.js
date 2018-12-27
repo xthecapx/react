@@ -57,20 +57,8 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    };
-
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPerson) {
       persons = (
@@ -89,11 +77,7 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
+      btnClass = classes.red;
     }
 
     // Dynamic classes
@@ -112,7 +96,7 @@ class App extends Component {
         <h1>Hello</h1>
         <p className={assignedClasses.join(' ')}> This is working!</p>
         {/** slow code */}
-        <button style={style} onClick={this.togglePersonsHandler}>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>
           Toggle Person
         </button>
         {persons}
