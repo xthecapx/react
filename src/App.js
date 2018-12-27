@@ -1,28 +1,27 @@
-import React, { Component } from "react";
-import "./App.css";
-import Person from "./Person/Person";
-import Radium, { StyleRoot } from "radium";
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
 
 class App extends Component {
   state = {
     persons: [
       {
-        id: "1",
-        name: "Cristian",
+        id: '1',
+        name: 'Cristian',
         age: 28
       },
       {
-        id: "2",
-        name: "Daniel",
+        id: '2',
+        name: 'Daniel',
         age: 29
       },
       {
-        id: "3",
-        name: "Marquez",
+        id: '3',
+        name: 'Marquez',
         age: 30
       }
     ],
-    otherState: "Some other vale",
+    otherState: 'Some other vale',
     showPerson: false
   };
 
@@ -58,15 +57,15 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer",
-      ":hover": {
-        backgroundColor: "lightgreen",
-        color: "black"
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
       }
     };
 
@@ -89,10 +88,10 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "salmon",
-        color: "black"
+      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
       };
     }
 
@@ -100,28 +99,26 @@ class App extends Component {
     const classes = [];
 
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      classes.push('red');
     }
 
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      classes.push('bold');
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>Hello</h1>
-          <p className={classes.join(" ")}> This is working!</p>
-          {/** slow code */}
-          <button style={style} onClick={this.togglePersonsHandler}>
-            Toggle Person
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className='App'>
+        <h1>Hello</h1>
+        <p className={classes.join(' ')}> This is working!</p>
+        {/** slow code */}
+        <button style={style} onClick={this.togglePersonsHandler}>
+          Toggle Person
+        </button>
+        {persons}
+      </div>
     );
     // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hello'))
   }
 }
 
-export default Radium(App);
+export default App;
