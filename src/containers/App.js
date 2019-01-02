@@ -18,6 +18,7 @@ class App extends PureComponent {
     console.log('[App.js] Inside constructor');
   }
 
+  // Avoid with the last version of React
   componentWillMount() {
     console.log('[App.js] Inside componentWillMount');
   }
@@ -38,6 +39,17 @@ class App extends PureComponent {
     console.log('[UPDATE App.js] inside componentWillUpdate', nextProps, nextState);
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('[UPDATE App.js] inside getDerivedStateFromProps', nextProps, prevState);
+
+    return prevState;
+  }
+
+  getSnapshotBeforeUpdate() {
+    console.log('[UPDATE App.js] inside getSnapshotBeforeUpdate');
+  }
+
+  // Avoid with the last version of React
   componentDidUpdate() {
     console.log('[UPDATE App.js] inside componentDidUpdate');
   }

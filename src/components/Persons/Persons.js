@@ -18,6 +18,7 @@ class Persons extends PureComponent {
     this.lastPersonRef.current.focus();
   }
 
+  // Avoid with the last version of React
   componentWillReceiveProps(nextProps) {
     console.log('[UPDATE Persons.js] inside componentWillReceiveProps', nextProps);
   }
