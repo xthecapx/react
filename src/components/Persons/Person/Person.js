@@ -8,6 +8,7 @@ class Person extends React.Component {
   constructor(props) {
     super(props);
     console.log('[Person.js] Inside constructor');
+    this.inputElement = React.createRef();
   }
 
   componentWillMount() {
@@ -16,10 +17,13 @@ class Person extends React.Component {
 
   componentDidMount() {
     console.log('[Person.js] Inside componentDidMount');
-
     if (this.props.position === 0) {
-      this.inputElement.focus();
+      this.focus();
     }
+  }
+
+  focus() {
+    this.inputElement.current.focus();
   }
 
   render() {
@@ -30,14 +34,7 @@ class Person extends React.Component {
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
         <p>{this.props.children}</p>
-        <input
-          ref={inp => {
-            this.inputElement = inp;
-          }}
-          type='text'
-          onChange={this.props.changed}
-          value={this.props.name}
-        />
+        <input ref={this.inputElement} type='text' onChange={this.props.changed} value={this.props.name} />
       </>
     );
 
