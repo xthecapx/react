@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 
 // https://github.com/css-modules/css-modules
 // https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
