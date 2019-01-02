@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Cockpit.css';
-import Aux from '../../hoc/Aux';
 
 function Cockpit(props) {
   // Dynamic classes
@@ -9,7 +8,6 @@ function Cockpit(props) {
 
   if (props.showPerson) {
     btnClass = [classes.Button, classes.red].join(' ');
-    console.log('******' + btnClass, classes.red);
   }
 
   if (props.persons.length <= 2) {
@@ -20,15 +18,16 @@ function Cockpit(props) {
     assignedClasses.push(classes.bold);
   }
 
+  // React 16.2 you can use fragments so you can re
   return (
-    <Aux>
+    <>
       <h1>{props.appTitle}</h1>
       <p className={assignedClasses.join(' ')}> This is working!</p>
       {/** slow code */}
       <button className={btnClass} onClick={props.clicked}>
         Toggle Person
       </button>
-    </Aux>
+    </>
   );
 }
 
