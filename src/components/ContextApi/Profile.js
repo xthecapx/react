@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AuthContext } from '../../containers/ContextApi/ContextApi';
+import AuthContext from '../../containers/ContextApi/auth-context';
 
 const profile = props => (
   <AuthContext.Consumer>

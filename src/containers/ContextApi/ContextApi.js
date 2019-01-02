@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 
 import Login from '../../components/ContextApi/Login';
 import Profile from '../../components/ContextApi/Profile';
-
-export const AuthContext = React.createContext({
-  isAuth: false,
-  toggleAuth: () => {}
-});
+import AuthContext from './auth-context';
 
 class ContextApi extends Component {
   state = {
