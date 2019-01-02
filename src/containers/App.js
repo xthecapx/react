@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
+import Cockpit from '../components/Cockpit/Cockpit';
+import Persons from '../components/Persons/Persons';
 
 // https://github.com/css-modules/css-modules
 // https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
@@ -47,8 +48,6 @@ class App extends Component {
       return acc;
     }, []);
 
-    debugger;
-
     this.setState({
       persons
     });
@@ -60,47 +59,18 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let btnClass = '';
 
     if (this.state.showPerson) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                key={person.id}
-                click={this.deletePersonHandler.bind(this, index)}
-                name={person.name}
-                age={person.age}
-                changed={event => this.nameChangedHandler(event, person.id)}
-              />
-            );
-          })}
+          <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.nameChangedHandler} />
         </div>
       );
-
-      btnClass = classes.red;
-    }
-
-    // Dynamic classes
-    const assignedClasses = [];
-
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
     }
 
     return (
       <div className={classes.App}>
-        <h1>Hello</h1>
-        <p className={assignedClasses.join(' ')}> This is working!</p>
-        {/** slow code */}
-        <button className={btnClass} onClick={this.togglePersonsHandler}>
-          Toggle Person
-        </button>
+        <Cockpit persons={this.state.persons} showPerson={this.state.showPerson} clicked={this.togglePersonsHandler} />
         {persons}
       </div>
     );
