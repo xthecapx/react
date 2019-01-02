@@ -30,6 +30,7 @@ class Person extends React.Component {
     console.log('[Person.js] Inside render');
     return (
       <>
+        <p>{this.props.authenticated ? 'authenticated' : ' not Authenticated'}</p>
         <p onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
