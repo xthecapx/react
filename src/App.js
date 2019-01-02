@@ -38,6 +38,7 @@ class App extends Component {
   nameChangedHandler = (event, id) => {
     const persons = this.state.persons.reduce((acc, person) => {
       if (person.id === id) {
+        // acc.push({ ...person, name: event.input.value });
         acc.push({ ...person, name: event.target.value });
       } else {
         acc.push({ ...person });
