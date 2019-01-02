@@ -8,6 +8,9 @@ import withClass from '../hoc/withClass';
 // https://github.com/css-modules/css-modules
 // https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
 // More tools / Rendering / Paint flashing
+
+export const AuthContext = React.createContext(false);
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -112,12 +115,7 @@ class App extends PureComponent {
     if (this.state.showPerson) {
       persons = (
         <div>
-          <Persons
-            persons={this.state.persons}
-            clicked={this.deletePersonHandler}
-            changed={this.nameChangedHandler}
-            isAuthenticated={this.state.authenticated}
-          />
+          <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.nameChangedHandler} />
         </div>
       );
     }
@@ -137,7 +135,7 @@ class App extends PureComponent {
           clicked={this.togglePersonsHandler}
           login={() => this.loginHandler()}
         />
-        {persons}
+        <AuthContext.Provider value={this.state.authenticated}>{persons}</AuthContext.Provider>
         {this.state.showUserComponent ? <User /> : null}
         <button onClick={this.removeUserHandler}>Remove User Component</button>
       </>
