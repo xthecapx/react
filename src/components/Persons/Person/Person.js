@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // Webpack handle this import
 import classes from './Person.css';
 import withClass from '../../../hoc/withClass';
@@ -39,5 +40,11 @@ class Person extends React.Component {
     // ];
   }
 }
+Person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func
+};
 
 export default withClass(Person, classes.Person);
