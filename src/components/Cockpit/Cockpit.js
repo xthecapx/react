@@ -32,4 +32,5 @@ function Cockpit(props) {
   );
 }
 
-export default Cockpit;
+// Add the behavior of PureComponent to Functional components
+export default React.memo(Cockpit);
