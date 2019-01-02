@@ -3,6 +3,7 @@ import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 import User from '../components/User/User';
+import WithClass from '../hoc/WithClass';
 
 // https://github.com/css-modules/css-modules
 // https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
@@ -106,7 +107,7 @@ class App extends PureComponent {
     }
 
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button
           onClick={() => {
             this.setState({ showPerson: true });
@@ -122,7 +123,7 @@ class App extends PureComponent {
         {persons}
         {this.state.showUserComponent ? <User /> : null}
         <button onClick={this.removeUserHandler}>Remove User Component</button>
-      </div>
+      </WithClass>
     );
     // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hello'))
   }
