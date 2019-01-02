@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
@@ -6,7 +6,8 @@ import User from '../components/User/User';
 
 // https://github.com/css-modules/css-modules
 // https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
-class App extends Component {
+// More tools / Rendering / Paint flashing
+class App extends PureComponent {
   constructor(props) {
     super(props);
     console.log('[App.js] Inside constructor');
@@ -20,11 +21,13 @@ class App extends Component {
     console.log('[App.js] Inside componentDidMount');
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  // Same as extend PureComponent
+  /* shouldComponentUpdate(nextProps, nextState) {
     console.log('[UPDATE App.js] inside shouldComponentUpdate', nextProps, nextState);
 
-    return true;
-  }
+    return nextState.persons !== this.state.persons || nextState.showPerson !== this.state.showPerson;
+    // return true;
+  } */
 
   componentWillUpdate(nextProps, nextState) {
     console.log('[UPDATE App.js] inside componentWillUpdate', nextProps, nextState);
@@ -104,6 +107,12 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
+        <button
+          onClick={() => {
+            this.setState({ showPerson: true });
+          }}>
+          Show person (true)
+        </button>
         <Cockpit
           appTitle={this.props.title}
           persons={this.state.persons}
