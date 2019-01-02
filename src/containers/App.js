@@ -58,7 +58,8 @@ class App extends PureComponent {
     ],
     otherState: 'Some other vale',
     showPerson: false,
-    showUserComponent: true
+    showUserComponent: true,
+    toggleClicked: 0
   };
 
   deletePersonHandler = personIndex => {
@@ -91,7 +92,12 @@ class App extends PureComponent {
   };
 
   removeUserHandler = () => {
-    this.setState({ showUserComponent: false });
+    this.setState((prevState, props) => {
+      return {
+        showUserComponent: false,
+        toggleClicked: prevState + 1
+      };
+    });
   };
 
   render() {
