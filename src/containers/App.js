@@ -6,6 +6,19 @@ import Persons from '../components/Persons/Persons';
 // https://github.com/css-modules/css-modules
 // https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] Inside constructor');
+  }
+
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount');
+  }
+
   state = {
     persons: [
       {
@@ -58,6 +71,7 @@ class App extends Component {
   };
 
   render() {
+    console.log('[App.js] Inside render');
     let persons = null;
 
     if (this.state.showPerson) {
