@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
+import User from '../components/User/User';
 
 // https://github.com/css-modules/css-modules
 // https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
@@ -38,7 +39,8 @@ class App extends Component {
       }
     ],
     otherState: 'Some other vale',
-    showPerson: false
+    showPerson: false,
+    showUserComponent: true
   };
 
   deletePersonHandler = personIndex => {
@@ -70,6 +72,10 @@ class App extends Component {
     this.setState({ showPerson: !this.state.showPerson });
   };
 
+  removeUserHandler = () => {
+    this.setState({ showUserComponent: false });
+  };
+
   render() {
     console.log('[App.js] Inside render');
     let persons = null;
@@ -91,6 +97,8 @@ class App extends Component {
           clicked={this.togglePersonsHandler}
         />
         {persons}
+        {this.state.showUserComponent ? <User /> : null}
+        <button onClick={this.removeUserHandler}>Remove User Component</button>
       </div>
     );
     // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hello'))
